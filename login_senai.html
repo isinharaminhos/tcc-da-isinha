@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SENAI</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração customizada do Tailwind (Cores, Fontes) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Nova Paleta de Cores Vermelha
+                        'senai-primary': '#E53E3E', // Vermelho principal (Botões, Título)
+                        'senai-secondary': '#9B2C2C', // Vermelho mais escuro (Hover, Banner)
+                        'senai-gray': '#F4F5F7', // Fundo
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo para ícones sociais (simulação de FontAwesome) */
+        .social-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-senai-gray min-h-screen flex items-center justify-center font-sans p-4">
+
+    <!-- Container Principal (Grid Responsivo) -->
+    <main class="w-full max-w-6xl mx-auto rounded-xl shadow-2xl overflow-hidden bg-white">
+        
+        <div class="md:grid md:grid-cols-5 lg:grid-cols-3">
+            
+            <!-- Seção de Login (2/5 no desktop, 100% no mobile) -->
+            <div class="col-span-3 lg:col-span-2 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                
+                <!-- Cabeçalho e Branding -->
+                <div class="mb-10 text-center">
+                    <h1 class="text-4xl font-extrabold text-senai-primary mb-2 tracking-tight">
+                        SENAI
+                    </h1>
+                    <p class="text-lg text-gray-600">Acesso à Plataforma do Aluno</p>
+                </div>
+
+                <!-- Formulário de Login -->
+                <form class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Registro Acadêmico (RA)</label>
+                        <input type="text" id="ra" placeholder="Seu número de RA" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-senai-primary focus:border-senai-primary shadow-sm transition duration-150" required>
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                        <input type="password" id="password" placeholder="••••••••" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-senai-primary focus:border-senai-primary shadow-sm transition duration-150" required>
+                    </div>
+
+                    <!-- Link de Esqueci a Senha -->
+                    <div class="flex justify-end text-sm">
+                        <a href="#" class="font-medium text-senai-primary hover:text-senai-secondary transition duration-150">Esqueceu a senha?</a>
+                    </div>
+
+                    <!-- Botão de Login -->
+                    <button type="submit" class="w-full py-3 px-4 bg-senai-primary text-white font-semibold rounded-lg shadow-md hover:bg-senai-secondary transition duration-200 focus:outline-none focus:ring-4 focus:ring-senai-primary focus:ring-opacity-50">
+                        Entrar
+                    </button>
+                </form>
+
+                <!-- Separador -->
+                <div class="relative my-8">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                    
+                    </div>
+                </div>
+
+                
+                <!-- Botão de Cadastro (Signup) -->
+                <div class="mt-8 text-center pt-4 border-t border-gray-100">
+                    <p class="text-gray-600 mb-3">Ainda não tem conta?</p>
+                    <button class="py-2 px-6 border-2 border-senai-primary text-senai-primary font-semibold rounded-lg hover:bg-senai-primary hover:text-white transition duration-200 focus:outline-none focus:ring-4 focus:ring-senai-primary focus:ring-opacity-50">
+                        Crie seu Cadastro
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Banner de Estudantes (3/5 no desktop, oculto no mobile) -->
+            <div class="col-span-2 lg:col-span-1 hidden md:block bg-senai-secondary relative">
+                <!-- Imagem de Placeholder (Substitua por uma imagem real do SENAI se for usar em produção) -->
+                <img src="img/whatsapp_image_2025-07-08_at_17.14.10.jpg" 
+                     alt="Banner de estudantes em atividade" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-80"
+                     onerror="this.onerror=null; this.src='https:'//placehold.co/1200x1600/E53E3E/FFFFFF?text=SENAI%0AEstudantes%0A(Banner)';">
+                
+                <!-- Sobreposição de Conteúdo no Banner -->
+                <div class="absolute inset-0 flex flex-col justify-end p-8 text-white bg-black bg-opacity-30">
+                    <h2 class="text-3xl font-bold mb-2">Construa o Seu Futuro</h2>
+                    <p class="text-lg">Cursos técnicos, inovação e o melhor da educação profissional.</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+</html>

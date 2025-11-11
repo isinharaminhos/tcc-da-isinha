@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas-Vindas ao Estudante - SENAI</title>
+    <!-- Carrega o Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração customizada do Tailwind (Cores, Fontes) --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta de Cores Vermelha (SENAI)
+                        'senai-primary': '#E53E3E', // Vermelho principal (Botões, Título)
+                        'senai-secondary': '#B91C1C', // Vermelho mais escuro (Hover, Banner Fundo)
+                        'senai-gray': '#F4F5F7', // Fundo
+                        'senai-text-dark': '#374151', // Texto escuro
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-senai-gray min-h-screen flex items-center justify-center font-sans p-4">
+
+    <!-- Container Principal (Grid Responsivo) --><main class="w-full max-w-6xl mx-auto rounded-xl shadow-2xl overflow-hidden bg-white">
+        
+        <div class="md:grid md:grid-cols-5">
+            
+            <!-- Seção de Boas-Vindas (3/5 no desktop, 100% no mobile) --><div class="col-span-3 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                
+                <!-- Conteúdo centralizado horizontalmente --><div class="max-w-md mx-auto w-full text-center">
+                    
+                    <!-- Logo/Nome da Instituição --><h1 class="text-4xl font-extrabold text-senai-primary mb-2 tracking-tight">
+                        SENAI
+                    </h1>
+                    <p class="text-lg text-senai-text-dark mb-8">
+                        Bem-vindo(a) à sua área de estudante!
+                    </p>
+                    
+                    <p class="text-lg text-gray-500 mb-8">
+                        Estamos felizes em ter você aqui.
+                    </p>
+
+                    <!-- Container dos Novos Botões (Flex para alinhar lado a lado) -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <!-- Botão Principal de Ação: Fazer Cadastro (AGORA EM ESTILO OUTLINE) -->
+                        <a href="#" class="flex-1 py-3 px-6 border-2 border-senai-primary text-senai-primary font-semibold uppercase rounded-lg shadow-md hover:bg-red-50 transition duration-200 ease-in-out focus:outline-none focus:ring-4 focus:ring-senai-primary focus:ring-opacity-50">
+                           Fazer Cadastro
+                        </a>
+                        
+                        <!-- Botão Secundário de Ação: Fazer Login (Mantendo OUTLINE e ajustando hover) -->
+                        <a href="#" class="flex-1 py-3 px-6 border-2 border-senai-primary text-senai-primary font-semibold uppercase rounded-lg shadow-md hover:bg-red-50 transition duration-200 ease-in-out focus:outline-none focus:ring-4 focus:ring-senai-primary focus:ring-opacity-50">
+                            Fazer Login
+                        </a>
+                    </div>
+
+
+                    <!-- Link para Sair -->
+                    <div class="mt-10 pt-6 border-t border-gray-200">
+                        <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">
+                            Sair da Plataforma
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Banner Lateral (2/5 no desktop, oculto no mobile) --><div class="col-span-2 hidden md:block bg-senai-secondary relative">
+                <!-- Imagem de Fundo (Placeholder de engenharia/inovações) -->
+                <img src="img/images.jpg" 
+                     alt="Banner com temas de engenharia e inovação" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-30"
+                     onerror="this.onerror=null; this.src='https:'//placehold.co/1200x1600/E53E3E/FFFFFF?text=SENAI%0AEstudantes%0A(Banner)&font_size=80';">
+                
+                <!-- Sobreposição de Conteúdo no Banner -->
+                <div class="absolute inset-0 flex flex-col justify-end p-8 text-white bg-black bg-opacity-30">
+                     <h2 class="text-4xl font-extrabold text-white mb-4 leading-tight">Senai Zerbini</h2>
+                    <p class="text-2xl font-bold mb-4">seu Futuro esta aqui!</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>                                                     
+
+</body>
+</html>
