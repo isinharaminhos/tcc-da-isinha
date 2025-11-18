@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SENAI</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração customizada do Tailwind (Cores, Fontes) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta de Cores Vermelha (SENAI)
+                        'senai-primary': '#E53E3E', // Vermelho principal (Branding, Botões)
+                        'senai-secondary': '#9B2C2C', // Vermelho mais escuro (Hover)
+                        'senai-gray': '#F4F5F7', // Fundo Principal
+                        'senai-dark-text': '#374151', // Texto escuro
+                        'senai-light': '#FEE2E2', // Vermelho muito claro
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo para links ativos no menu horizontal */
+        .active-link {
+            color: #E53E3E; /* senai-primary */
+            border-bottom: 3px solid #E53E3E; /* Destaque inferior */
+            font-weight: 700; /* Extra bold */
+        }
+
+        /* Estilo base para links do menu horizontal */
+        .menu-link {
+            transition: color 0.2s, border-bottom 0.2s;
+            line-height: 1.5; /* Altura de linha para facilitar o clique */
+        }
+        .menu-link:not(.active-link):hover {
+            color: #9B2C2C; /* senai-secondary */
+            border-bottom: 3px solid transparent;
+        }
+
+        /* Estilo para links no menu mobile (dropdown vertical) */
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            font-weight: 600;
+        }
+        .mobile-menu-link:hover:not(.mobile-menu-active) {
+            background-color: #FEE2E2; /* senai-light */
+            color: #E53E3E;
+        }
+        .mobile-menu-active {
+            background-color: #E53E3E; /* senai-primary */
+            color: white;
+        }
+    </style>
+</head>
+<!-- Removido 'flex' do body, pois não temos mais sidebar lateral -->
+<body class="bg-senai-gray min-h-screen font-sans">
+
+    <!-- Container Principal (Top-Down) -->
+    <div class="flex flex-col min-h-screen">
+        
+        <!-- Topbar e Menu Horizontal -->
+        <header class="w-full bg-white shadow-md sticky top-0 z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    
+                    <!-- Branding (SENAI Logo) -->
+                    <div class="flex-shrink-0">
+                        <h1 class="text-3xl font-extrabold text-senai-primary tracking-tight">SENAI</h1>
+                    </div>
+
+                    <!-- Menu Horizontal (Desktop) -->
+                    <nav class="hidden md:flex flex-grow justify-start space-x-8 ml-10">
+                        <!-- Link Dashboard (Ativo) -->
+                        <a href="#" class="menu-link active-link text-senai-dark-text pt-1 pb-1 px-1 text-base font-medium">
+                           Tela Principal
+                        </a>
+
+                        <!-- Link Cadastro -->
+                        <a href="cadastro_senai.html" class="menu-link text-senai-dark-text pt-1 pb-1 px-1 text-base font-medium">
+                            Cadastro
+                        </a>
+
+                        <!-- Link Relatório -->
+                        <a href="relatorios_senai.html" class="menu-link text-senai-dark-text pt-1 pb-1 px-1 text-base font-medium">
+                            Relatórios
+                        </a>
+                        
+                        <!-- Link Sair -->
+                        <a href="login_senai.html" class="menu-link text-gray-500 pt-1 pb-1 px-1 text-base font-medium">
+                            Sair
+                        </a>
+                    </nav>
+                    
+                    <!-- Notificação, Perfil e Toggle (Mobile) -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-xl text-gray-500 cursor-pointer hover:text-senai-primary transition duration-150"></span>
+                        <div class="h-10 w-10 bg-senai-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            SENAI
+                        </div>
+                        
+                        <!-- Botão de Menu Hamburguer para Mobile (ícone ☰) -->
+                        <button id="menu-toggle" class="md:hidden text-senai-dark-text p-2 rounded-lg hover:bg-gray-100 transition duration-150">
+                            <span class="text-2xl">☰</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Menu Mobile (Dropdown - Visível apenas no Mobile ao clicar no Hamburguer) -->
+            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-gray-50 py-2 px-4 sm:px-6 lg:px-8">
+                <div class="pt-2 pb-3 space-y-1">
+                    <!-- Link Dashboard (Ativo) -->
+                    <a href="#" class="mobile-menu-link mobile-menu-active">🏠 Dashboard</a>
+
+                    <!-- Link Cadastro -->
+                    <a href="cadastro_senai.html" class="mobile-menu-link text-senai-dark-text">📝 Cadastro</a>
+
+                    <!-- Link Relatório -->
+                    <a href="relatorios_senai.html" class="mobile-menu-link text-senai-dark-text">📊 Relatórios</a>
+                    
+                    <!-- Link Sair -->
+                    <a href="login_senai.html" class="mobile-menu-link text-gray-500">🚪 Sair</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área de Conteúdo da Dashboard -->
+        <main class="p-6 md:p-8 flex-grow max-w-7xl mx-auto w-full">
+            
+            <!-- Título da Página Atual -->
+            <h2 class="text-2xl font-bold text-senai-dark-text mb-6">BEM-VINDO(A)!</h2>
+
+            <!-- Boas-Vindas -->
+            <p class="text-gray-500 mb-8">Construa o Seu Futuro
+            Cursos técnicos, inovação e o melhor da educação profissional.</p>
+            
+            <!-- Seção de Ações Rápidas -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-senai-dark-text mb-4">Ações Rápidas</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Ação Rápida: Novo Cadastro -->
+                    <a href="cadastro_senai.html" class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-200 flex items-center space-x-4">
+                        <span class="text-3xl text-senai-primary">✍️</span>
+                        <div>
+                            <p class="font-bold text-senai-dark-text">Fazer Novo Cadastro</p>
+                            <p class="text-sm text-gray-500">Adicione um novo usuário ao sistema.</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Ação Rápida: Gerar Relatório -->
+                    <a href="relatorios_senai.html" class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-200 flex items-center space-x-4">
+                        <span class="text-3xl text-senai-primary">📈</span>
+                        <div>
+                            <p class="font-bold text-senai-dark-text">Gerar Relatório Completo</p>
+                            <p class="text-sm text-gray-500">Acesse métricas detalhadas de uso.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Lógica para o menu hamburguer (agora um menu dropdown)
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            // Simplesmente alterna a classe 'hidden' para mostrar/esconder o menu mobile
+            menu.classList.toggle('hidden');
+        }
+
+        // Adiciona o listener ao botão de menu hamburguer
+        document.getElementById('menu-toggle').addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+</html>
